@@ -1,0 +1,22 @@
+function output = phase_amplitude_coupling(signal_lf, signal_hf, lower_range, fs)
+
+%fs = Sampling Rate
+
+z_lf = hilbert(signal_lf);
+z_hf = hilbert(signal_hf);
+
+A_hf = abs(z_hf);
+
+phi_lf = angle(z_lf);
+
+A_hf_lf = use_filter(A_hf, lower_range, fs);
+
+z_hf_lf = hilbert(A_hf_lf);
+
+phi_hf_lf = angle(z_hf_lf);
+
+output = mean(sign(phi_lf - phi_hf_lf));
+
+end
+
+
