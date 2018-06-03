@@ -1,4 +1,5 @@
 function [output] = adjacency_matrix_pli(mat1, mat2, flag, low_cutoff)
+disp('Entering adjacency matrix')
 % flag checks if both mat are from same adjacency matrix or not. If they
 % are, leading diagonal is 0.
 fs = 256;
@@ -14,4 +15,5 @@ for i=1:nelectrodes
         end
     end
 end
+disp('Exiting adjacency matrix')
 end

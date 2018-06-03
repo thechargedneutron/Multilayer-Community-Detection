@@ -1,4 +1,5 @@
 function [output] = adjacency_matrix(mat1, mat2, flag)
+disp('Entering adjacency matrix')
 % flag checks if both mat are from same adjacency matrix or not. If they
 % are, leading diagonal is 0.
 nelectrodes = 62;
@@ -13,4 +14,5 @@ for i=1:nelectrodes
         end
     end
 end
+('Exiting adjacency matrix')
 end

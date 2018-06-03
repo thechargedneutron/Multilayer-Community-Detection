@@ -22,5 +22,5 @@ for epoch=1:epochs
         end
     end
 end
-final = final(~cellfun('isempty', final));
+final = final(~cellfun('isempty', final);
 end
