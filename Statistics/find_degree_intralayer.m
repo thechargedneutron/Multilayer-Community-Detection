@@ -4,6 +4,12 @@ function output = find_degree_intralayer(input)
 nnodes = 62;
 nlayers = 5;
 
+%Remove delta
+[x, ~] = size(input);
+if x == 372
+input = input(63:end, 63:end);
+end
+
 degree_sum = zeros(nnodes, nlayers);
 for j = 1:nlayers
   adj_matrix = input((62*(j-1) + 1):62*j, (62*(j-1) + 1):62*j);
