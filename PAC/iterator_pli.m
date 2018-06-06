@@ -1,7 +1,7 @@
 clear all
 clc
 
-for iii=[13, 15, 16, 17, 19, 21, 24, 26]
+for iii=[27, 29, 30, 34, 35, 36, 39, 40]
     start = 1
     load(strcat('/home/ashutosh/Desktop/Multilayer/',num2str(iii),'/IAF.mat'));
     if exist(strcat('/home/ashutosh/Desktop/Multilayer/',num2str(iii),'/EEG_AUNEW.mat')) == 2
