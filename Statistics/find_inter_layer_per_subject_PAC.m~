@@ -1,0 +1,32 @@
+function ret = find_inter_layer_per_subject_PAC(EEG_supra_adj)
+
+EEG_supra_adj = EEG_supra_adj(~cellfun('isempty',EEG_supra_adj)); %To remove empty cells
+ret = {};
+
+for i = 1:length(EEG_supra_adj)
+    first_epoch = EEG_supra_adj(1:3:end);
+    second_epoch = EEG_supra_adj(2:3:end);
+    third_epoch = EEG_supra_adj(3:3:end);
+    first = {};
+    second = {};
+    third = {};
+    for j=1:length(first_epoch)
+        mat = find_degree_interlayer(first_epoch{j});
+        first{j} = mat;
+    end
+    
+    for j=1:length(second_epoch)
+        mat = find_degree_interlayer(second_epoch{j});
+        second{j} = mat;
+    end
+    
+    for j=1:length(third_epoch)
+        mat = find_function(third_epoch{j});
+        third{j} = mat;
+    end
+    
+    ret(i) = {first, second, third};
+end
+
+    
+    

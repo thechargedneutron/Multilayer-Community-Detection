@@ -1,0 +1,33 @@
+function [] = final_montage(x_list, y_list)
+load('ANT_Coordinates.mat');
+
+figure
+axis off
+hold on
+xlim([-1100 1100]);ylim([-1100 1100]);
+
+for i=1:5
+    for j=i:5
+        base_x = -920 + 430*(j-1);
+        base_y = -920 + 430*(i-1);
+        matrix_of_montage(base_x, base_y);
+        matrix_of_montage(base_x+180, base_y);
+    end
+end
+
+for num=1:length(x_list)
+    layer_1 = ceil(x_list(num)/62);
+    node_1 = mod(x_list(num)-1, 62)+1;
+    
+    layer_2 = ceil(y_list(num)/62);
+    node_2 = mod(y_list(num) - 1, 62) + 1;
+    
+    if layer1 < layer2
+        base_x = -920 + 430*(layer2-1);
+        base_y = -920 + 430*(layer1-1);
+        plot([EleLoc(node_1,1)+base_x EleLoc(node_2,1) + 180],[EleLoc(node_1,2)+base_y EleLoc(node_2,2)+base_y],'k');
+    else
+        base_x = -920 + 430*(layer1-1);
+        base_y = -920 + 430*(layer2-1);
+        plot([EleLoc(node_2,1)+base_x EleLoc(node_1,1) + 180],[EleLoc(node_1,2)+base_y EleLoc(node_2,2)+base_y],'k');
+    

@@ -1,0 +1,18 @@
+clc
+%load('CognionicsLayoutCoordinate.mat');
+N_chan=62;
+plot(circleX,circleY,'k','LineWidth',2);
+xlim([-100 100]);ylim([-100 100]);
+axis off;
+hold on;
+%plot(NoseX,NoseY,'k','LineWidth',2);
+%plot(LearX,LearY,'k','LineWidth',2);
+%plot(RearX,RearY,'k','LineWidth',2);
+for i=1:N_chan
+%     if (i==1 || i==2 || i==3 || i==4 || i==5 || i==6 || i==21 || i==23)
+% %         [1 2 3 4 5 6 21 23]
+% plot(EleLoc1(i,1),EleLoc1(i,2),'o','MarkerSize',1,'MarkerEdgeColor','k','LineWidth',1,'MarkerFaceColor','r');
+%     else
+        plot(EleLoc1(i,2),EleLoc1(i,1),'o','MarkerSize',3,'MarkerEdgeColor','k','LineWidth',1);
+%     plot(xx(i,2),xx(i,1),'o','MarkerSize',3,'MarkerEdgeColor','k','LineWidth',1);
+end
