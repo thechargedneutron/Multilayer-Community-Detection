@@ -2,7 +2,7 @@ function output = find_degree_intralayer(input)
 %input is supra_adjacency matrix
 
 nnodes = 62;
-nlayers = 5;
+nlayers = 3;
 
 %Remove delta
 [x, ~] = size(input);

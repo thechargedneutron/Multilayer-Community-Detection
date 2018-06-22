@@ -1,4 +1,4 @@
-function output = spectral_matrix(supra_mat)
+function Rg = spectral_matrix(supra_mat)
 
 q1 = zeros(size(supra_mat));
 q2 = -supra_mat;
@@ -19,8 +19,7 @@ end
 
 Q = q1+q2;
 
-R = laplacian(Q);
-
-output = 310 * trace(pinv(R));
+temp = pinv(Q);
+Rg = 310*trace(temp);
 
 end

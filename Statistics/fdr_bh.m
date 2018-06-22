@@ -151,8 +151,6 @@ if nargout>2,
     adj_p=reshape(adj_p(unsort_ids),s);
 end
 
-thresh
-p_sorted
 rej=p_sorted<=thresh;
 max_id=find(rej,1,'last'); %find greatest significant pvalue
 if isempty(max_id),

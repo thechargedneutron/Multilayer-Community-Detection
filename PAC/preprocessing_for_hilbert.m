@@ -9,8 +9,14 @@ mag_filter = {};
 phase_ht_mag_filter = {};
 for i = 1:m
     for j = 1:n
-        output_arg(i, j) = {abs(hilbert(EEG_layers{i, j}))};
-        output_ang(i, j) = {angle(hilbert(EEG_layers{i, j}))};
+        temp_arg = zeros(size(EEG_layers{i, j}));
+        temp_ang = zeros(size(EEG_layers{i, j}));
+        for k=1:62
+            temp_arg(k, :) = abs(hilbert(EEG_layers{i, j}(k, :)));
+            temp_ang(k, :) = angle(hilbert(EEG_layers{i, j}(k, :)));
+        end
+        output_arg(i, j) = {temp_arg};
+        output_ang(i, j) = {temp_ang};
         mag_filter(i, j) = {create_layers(output_arg(i, j), IAF)};
     end
 end
@@ -20,7 +26,11 @@ for i = 1:m
         cells = mag_filter{i, j};
         phase_hilbert = {};
         for k=1:length(cells)
-            phase_hilbert(k) = {angle(hilbert(cells{k}))};
+            temp1_ang = zeros(size(cells{k}));
+            for f = 1:62
+                temp1_ang(f, :) = angle(hilbert(cells{k}(f, :)));
+            end
+            phase_hilbert(k) = {temp1_ang};
         end
         phase_ht_mag_filter(i, j) = {phase_hilbert};
     end

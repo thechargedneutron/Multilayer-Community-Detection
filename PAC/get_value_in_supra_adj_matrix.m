@@ -1,4 +1,4 @@
-function [output] = get_value_in_supra_adj_matrix(layer1, layer2, trial, epoch, output_ang, phase_ht_mag_filter)
+function [output, vec1, vec2] = get_value_in_supra_adj_matrix(layer1, layer2, trial, epoch, output_ang, phase_ht_mag_filter)
 
 if layer1(1) > layer2(1)
     min_layer = layer2;
@@ -16,9 +16,8 @@ end
 % trial
 mat1 = output_ang{trial, min_layer(1)};
 vec1 = mat1(min_layer(2), :);
-
 %All about upper
-if min_layer == max_layer
+if min_layer(1) == max_layer(1)
     vec2 = mat1(max_layer(2), :);
 else
     cell1 = phase_ht_mag_filter{trial, max_layer(1)};
