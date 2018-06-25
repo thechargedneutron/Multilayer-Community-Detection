@@ -12,7 +12,8 @@ for i = 1:m
         temp_arg = zeros(size(EEG_layers{i, j}));
         temp_ang = zeros(size(EEG_layers{i, j}));
         for k=1:62
-            temp_arg(k, :) = abs(hilbert(EEG_layers{i, j}(k, :)));
+            xx = abs(hilbert(EEG_layers{i, j}(k, :)));
+            temp_arg(k, :) = (xx - mean(xx))/std(xx);
             temp_ang(k, :) = angle(hilbert(EEG_layers{i, j}(k, :)));
         end
         output_arg(i, j) = {temp_arg};
