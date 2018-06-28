@@ -1,6 +1,6 @@
 function [output_ang, phase_ht_mag_filter] = preprocessing_for_hilbert(EEG_layers, IAF)
 %input mat is the output from create_layers
-%input is cell of no. of trials * 6
+%input is cell of no. of trials * 5
 
 [m, n] = size(EEG_layers);
 output_arg = {};
@@ -12,8 +12,7 @@ for i = 1:m
         temp_arg = zeros(size(EEG_layers{i, j}));
         temp_ang = zeros(size(EEG_layers{i, j}));
         for k=1:62
-            xx = abs(hilbert(EEG_layers{i, j}(k, :)));
-            temp_arg(k, :) = (xx - mean(xx))/std(xx);
+            temp_arg(k, :) = abs(hilbert(EEG_layers{i, j}(k, :)));
             temp_ang(k, :) = angle(hilbert(EEG_layers{i, j}(k, :)));
         end
         output_arg(i, j) = {temp_arg};

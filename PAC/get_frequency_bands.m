@@ -1,14 +1,14 @@
 function output = get_frequency_bands(IAF)
 
-output = zeros(6,2);
+output = zeros(5,2);
 
 %We use the order delta, theta, alpha_low, alpha_high, beta, gamma
-output(1,:) = [IAF-7, IAF-6]; %delta
-output(2, :) = [IAF-6, IAF-2]; %theta
-output(3, :) = [IAF-2, IAF]; %alpha_low
-output(4, :) = [IAF, IAF+2]; %alpha_high
-output(5, :) = [IAF+2, IAF+16]; %beta
-output(6, :) = [IAF+16, IAF+30]; %gamma
+%output(1,:) = [IAF-7, IAF-6]; %delta
+output(1, :) = [IAF-6, IAF-2]; %theta
+output(2, :) = [IAF-2, IAF]; %alpha_low
+output(3, :) = [IAF, IAF+2]; %alpha_high
+output(4, :) = [IAF+2, IAF+16]; %beta
+output(5, :) = [IAF+16, IAF+30]; %gamma
 
 % output(1,:) = [1, 4]; %delta
 % output(2, :) = [4, 8]; %theta
