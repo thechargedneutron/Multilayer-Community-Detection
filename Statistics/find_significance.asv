@@ -1,17 +1,15 @@
 %metric calculator
 
 
-function [significant, metric_value] = find_significance(avg_AUNEW, avg_AUOLD, avg_OC, metric)
+function significant = find_significance(avg_AUNEW, avg_AUOLD, avg_OC, metric, num)
 
-% name = ['Intra_', 'Inter_', 'Clustering_'];
+name = ['Intra_', 'Inter_', 'Clustering_'];
 
 %Metrics which returns 62 values for each supra adjacency matrix
 
 [~, ~, num_AUNEW, ~] = size(avg_AUNEW);
 [~, ~, num_AUOLD, ~] = size(avg_AUOLD);
 [~, ~, num_OC, ~] = size(avg_OC);
-
-metric_value = {};
 
 metric_AUNEW = zeros(62, num_AUNEW, 3);
 metric_AUOLD = zeros(62, num_AUOLD, 3);
@@ -38,12 +36,9 @@ for i=1:num_OC
     end
 end
 
-
-metric_value{1} = metric_AUNEW;
-metric_value{2} = metric_AUOLD;
-metric_value{3} = metric_OC;
-
 significant = zeros(62, 3);
+sum_degree = squeeze(sum(metric_AUNEW));
+sum_degree_AUOLD = squeeze(sum(metric
 
 for i=1:62
     for j = 1:3

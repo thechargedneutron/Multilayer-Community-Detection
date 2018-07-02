@@ -12,8 +12,8 @@ end
 
 degree_sum = zeros(nnodes, nlayers);
 for j = 1:nlayers
-  dummy_input = input((62*(j-1) + 1):62*j, :);
-  dummy_input(:, (62*(j-1) + 1):62*j) = 0;
+  dummy_input = input((nnodes*(j-1) + 1):nnodes*j, :);
+  dummy_input(:, (nnodes*(j-1) + 1):nnodes*j) = 0;
   degree_sum(:, j) = sum(dummy_input, 2);
 end
 output = sum(degree_sum, 2);
